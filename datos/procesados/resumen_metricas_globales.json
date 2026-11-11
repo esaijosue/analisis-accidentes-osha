@@ -1,0 +1,36 @@
+{
+    "total_establecimientos_analizados": 352500,
+    "total_horas_trabajadas_muestra": 1064739946443.0,
+    "total_casos_registrables": 1479805,
+    "total_muertes_reportadas": 769,
+    "tir_global_ponderado": 0.278,
+    "dart_global_ponderado": 0.178,
+    "ltir_global_ponderado": 0.098,
+    "top_5_sectores_mayor_riesgo": [
+        {
+            "nombre_sector_es": "Almacenamiento y Depósitos",
+            "tir_ponderado": 5.924268988498297,
+            "dart_ponderado": 5.040550682330484
+        },
+        {
+            "nombre_sector_es": "Sector 95",
+            "tir_ponderado": 5.750932671419534,
+            "dart_ponderado": 4.823362885706707
+        },
+        {
+            "nombre_sector_es": "Comercio Minorista (Tiendas Generales, Farmacias)",
+            "tir_ponderado": 4.8782638532313785,
+            "dart_ponderado": 2.9054214572667028
+        },
+        {
+            "nombre_sector_es": "Administración Pública",
+            "tir_ponderado": 4.027577337466776,
+            "dart_ponderado": 2.3269509893199833
+        },
+        {
+            "nombre_sector_es": "Sector 99",
+            "tir_ponderado": 3.701107787824743,
+            "dart_ponderado": 2.0047667184050693
+        }
+    ]
+}

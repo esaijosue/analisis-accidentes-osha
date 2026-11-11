@@ -1,0 +1,15 @@
+# Archivos grandes de datos crudos (exceden los límites de GitHub)
+datos/*.csv
+datos/*.zip
+
+# Entornos virtuales y paquetes locales
+.venv/
+paquetes_python/
+cache_huggingface/
+__pycache__/
+*.pyc
+
+# Archivos del sistema y temporales
+.DS_Store
+.ipynb_checkpoints/
+

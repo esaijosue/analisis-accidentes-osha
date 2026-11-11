@@ -1,0 +1,20 @@
+{
+    "categorias": [
+        "Caida_Distinto_Nivel",
+        "Atrapamiento_Maquinaria",
+        "Golpeado_Por_Objeto",
+        "Incidente_Vehicular",
+        "Exposicion_Sustancias_Peligrosas",
+        "Sobreesfuerzo_Ergonomico"
+    ],
+    "descripciones_es": {
+        "Caida_Distinto_Nivel": "Caída a Distinto Nivel (Trabajo en Altura)",
+        "Atrapamiento_Maquinaria": "Atrapamiento en Maquinaria / Equipos en Movimiento",
+        "Golpeado_Por_Objeto": "Golpeado por Objeto en Caída o Movimiento",
+        "Incidente_Vehicular": "Incidente Vehicular / Equipos Móviles Industriales",
+        "Exposicion_Sustancias_Peligrosas": "Exposición a Sustancias Peligrosas / Químicos",
+        "Sobreesfuerzo_Ergonomico": "Sobreesfuerzo y Lesión Ergonómica"
+    },
+    "total_entrenamiento": 11998,
+    "total_prueba": 3000
+}

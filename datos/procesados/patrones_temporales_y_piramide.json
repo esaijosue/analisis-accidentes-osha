@@ -1,0 +1,105 @@
+{
+    "total_analizados_2024": 687706,
+    "dias_semana": [
+        {
+            "dia": "Lunes",
+            "accidentes": 115323
+        },
+        {
+            "dia": "Martes",
+            "accidentes": 118049
+        },
+        {
+            "dia": "Miércoles",
+            "accidentes": 115531
+        },
+        {
+            "dia": "Jueves",
+            "accidentes": 111961
+        },
+        {
+            "dia": "Viernes",
+            "accidentes": 102722
+        },
+        {
+            "dia": "Sábado",
+            "accidentes": 65006
+        },
+        {
+            "dia": "Domingo",
+            "accidentes": 59114
+        }
+    ],
+    "meses_ano": [
+        {
+            "mes": "Enero",
+            "accidentes": 59951
+        },
+        {
+            "mes": "Febrero",
+            "accidentes": 54019
+        },
+        {
+            "mes": "Marzo",
+            "accidentes": 54794
+        },
+        {
+            "mes": "Abril",
+            "accidentes": 55368
+        },
+        {
+            "mes": "Mayo",
+            "accidentes": 58111
+        },
+        {
+            "mes": "Junio",
+            "accidentes": 58846
+        },
+        {
+            "mes": "Julio",
+            "accidentes": 62745
+        },
+        {
+            "mes": "Agosto",
+            "accidentes": 62439
+        },
+        {
+            "mes": "Septiembre",
+            "accidentes": 57954
+        },
+        {
+            "mes": "Octubre",
+            "accidentes": 59297
+        },
+        {
+            "mes": "Noviembre",
+            "accidentes": 52509
+        },
+        {
+            "mes": "Diciembre",
+            "accidentes": 51673
+        }
+    ],
+    "piramide_severidad": [
+        {
+            "nivel": "Fatalidades (Muertes)",
+            "casos": 201,
+            "color": "#DC2626"
+        },
+        {
+            "nivel": "Baja Médica (Días Perdidos - DAFW)",
+            "casos": 246028,
+            "color": "#EA580C"
+        },
+        {
+            "nivel": "Trabajo Restringido (DJTR)",
+            "casos": 208049,
+            "color": "#F59E0B"
+        },
+        {
+            "nivel": "Tratamiento Médico sin Días Perdidos",
+            "casos": 234371,
+            "color": "#3B82F6"
+        }
+    ]
+}

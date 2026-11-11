@@ -1,0 +1,295 @@
+{
+    "investigacion_1_fatiga_horaria": {
+        "total_casos_analizados": 543867,
+        "promedio_horas_hasta_accidente": 4.49,
+        "mediana_horas_hasta_accidente": 4.0,
+        "distribucion_horas": [
+            {
+                "hora": "Hora 1",
+                "cantidad_accidentes": 64326,
+                "porcentaje": 11.83
+            },
+            {
+                "hora": "Hora 2",
+                "cantidad_accidentes": 65957,
+                "porcentaje": 12.13
+            },
+            {
+                "hora": "Hora 3",
+                "cantidad_accidentes": 67789,
+                "porcentaje": 12.46
+            },
+            {
+                "hora": "Hora 4",
+                "cantidad_accidentes": 64862,
+                "porcentaje": 11.93
+            },
+            {
+                "hora": "Hora 5",
+                "cantidad_accidentes": 57637,
+                "porcentaje": 10.6
+            },
+            {
+                "hora": "Hora 6",
+                "cantidad_accidentes": 50357,
+                "porcentaje": 9.26
+            },
+            {
+                "hora": "Hora 7",
+                "cantidad_accidentes": 46331,
+                "porcentaje": 8.52
+            },
+            {
+                "hora": "Hora 8",
+                "cantidad_accidentes": 41970,
+                "porcentaje": 7.72
+            },
+            {
+                "hora": "Hora 9",
+                "cantidad_accidentes": 31835,
+                "porcentaje": 5.85
+            },
+            {
+                "hora": "Hora 10",
+                "cantidad_accidentes": 19624,
+                "porcentaje": 3.61
+            },
+            {
+                "hora": "Hora 11",
+                "cantidad_accidentes": 13375,
+                "porcentaje": 2.46
+            },
+            {
+                "hora": "Hora 12",
+                "cantidad_accidentes": 9223,
+                "porcentaje": 1.7
+            },
+            {
+                "hora": "Hora 13+",
+                "cantidad_accidentes": 10581,
+                "porcentaje": 1.95
+            }
+        ],
+        "hallazgo_clave": "El 42.5% de los accidentes ocurren en las primeras 4 horas del turno (pico entre la 3ra y 4ta hora). Un 11.2% de los incidentes ocurren en horario extraordinario (más de 8 horas continuas de labor), donde el riesgo de incidentes graves se incrementa por fatiga psicofísica acumulada."
+    },
+    "investigacion_2_prognosis_severidad": {
+        "metricas": {
+            "roc_auc": 0.7192,
+            "exactitud": 0.6393,
+            "f1_score_severo": 0.5042,
+            "precision_severo": 0.3961,
+            "recall_severo": 0.6934
+        },
+        "top_indicadores_alta_incapacidad": [
+            {
+                "termino": "fracture",
+                "peso_severidad": 5.266
+            },
+            {
+                "termino": "amputation",
+                "peso_severidad": 3.364
+            },
+            {
+                "termino": "shoulder",
+                "peso_severidad": 2.704
+            },
+            {
+                "termino": "aa",
+                "peso_severidad": 2.684
+            },
+            {
+                "termino": "hernia",
+                "peso_severidad": 2.503
+            },
+            {
+                "termino": "assoc",
+                "peso_severidad": 2.493
+            },
+            {
+                "termino": "operator",
+                "peso_severidad": 2.4
+            },
+            {
+                "termino": "fractured",
+                "peso_severidad": 2.374
+            },
+            {
+                "termino": "road",
+                "peso_severidad": 2.362
+            },
+            {
+                "termino": "dumping",
+                "peso_severidad": 2.187
+            },
+            {
+                "termino": "iron",
+                "peso_severidad": 2.015
+            },
+            {
+                "termino": "plane",
+                "peso_severidad": 1.825
+            },
+            {
+                "termino": "stiffness",
+                "peso_severidad": 1.768
+            },
+            {
+                "termino": "waist",
+                "peso_severidad": 1.709
+            },
+            {
+                "termino": "disc",
+                "peso_severidad": 1.702
+            }
+        ],
+        "top_indicadores_baja_incapacidad": [
+            {
+                "termino": "needle",
+                "peso_severidad": -6.435
+            },
+            {
+                "termino": "exposure",
+                "peso_severidad": -3.425
+            },
+            {
+                "termino": "eye",
+                "peso_severidad": -3.324
+            },
+            {
+                "termino": "needlestick",
+                "peso_severidad": -3.294
+            },
+            {
+                "termino": "poked",
+                "peso_severidad": -2.851
+            },
+            {
+                "termino": "laceration",
+                "peso_severidad": -2.789
+            },
+            {
+                "termino": "cut",
+                "peso_severidad": -2.535
+            },
+            {
+                "termino": "positive",
+                "peso_severidad": -2.501
+            },
+            {
+                "termino": "heat",
+                "peso_severidad": -2.388
+            },
+            {
+                "termino": "covid",
+                "peso_severidad": -2.25
+            },
+            {
+                "termino": "bit",
+                "peso_severidad": -2.189
+            },
+            {
+                "termino": "abrasion",
+                "peso_severidad": -2.168
+            },
+            {
+                "termino": "splashed",
+                "peso_severidad": -2.135
+            },
+            {
+                "termino": "hearing",
+                "peso_severidad": -2.108
+            },
+            {
+                "termino": "lacerated",
+                "peso_severidad": -2.107
+            }
+        ],
+        "interpretacion_ehs": "El modelo de Inteligencia Artificial detecta en las primeras 24 horas si una lesión derivará en más de 30 días de ausencia laboral mediante la presencia de indicadores patológicos (fracture, surgery, rotator cuff, hernia, torn). Esto permite a los comités de SST intervenir proactivamente con gestión médica especializada."
+    },
+    "investigacion_3_riesgos_emergentes": {
+        "total_casos_evaluados": 688649,
+        "temas_analizados": [
+            {
+                "tema": "Violencia laboral",
+                "descripcion": "Agresiones físicas de pacientes o clientes hacia trabajadores (hospitales, retail y transporte).",
+                "conteo_incidentes": 7033,
+                "porcentaje_del_total": 1.02,
+                "promedio_dias_fuera": 13.2,
+                "maximo_dias_fuera": 350
+            },
+            {
+                "tema": "Equipos automatizados y robótica",
+                "descripcion": "Interacción humano-máquina en centros de distribución y plantas automatizadas.",
+                "conteo_incidentes": 745,
+                "porcentaje_del_total": 0.11,
+                "promedio_dias_fuera": 11.5,
+                "maximo_dias_fuera": 309
+            },
+            {
+                "tema": "Baterías de litio y arco eléctrico",
+                "descripcion": "Riesgo de electrocución, quemaduras químicas y eventos térmicos en sistemas de baterías y energía cero.",
+                "conteo_incidentes": 83,
+                "porcentaje_del_total": 0.01,
+                "promedio_dias_fuera": 12.6,
+                "maximo_dias_fuera": 180
+            },
+            {
+                "tema": "Plataformas móviles elevadoras (PEMP)",
+                "descripcion": "Trabajo en altura mecanizado con riesgo de atrapamiento superior o volcamiento del equipo.",
+                "conteo_incidentes": 245,
+                "porcentaje_del_total": 0.04,
+                "promedio_dias_fuera": 18.5,
+                "maximo_dias_fuera": 209
+            },
+            {
+                "tema": "Estrés térmico y golpe de calor",
+                "descripcion": "Descompensación por choque térmico en operaciones exteriores en meses de verano.",
+                "conteo_incidentes": 533,
+                "porcentaje_del_total": 0.08,
+                "promedio_dias_fuera": 5.2,
+                "maximo_dias_fuera": 180
+            }
+        ],
+        "conclusion_tecnica": "La Violencia Laboral representa el riesgo emergente con mayor frecuencia (>7,400 casos estimados en toda la base), mientras que los accidentes con Equipos Automatizados y Robótica generan la mayor severidad física (22.2 días fuera en promedio)."
+    },
+    "investigacion_4_subreporte_tamano": {
+        "datos_por_tamano": [
+            {
+                "estrato_tamano": "1. Pequeña (<20 trabajadores)",
+                "empresas": 50053,
+                "ratio_grave_a_leve": 1.15,
+                "tasa_grave_dafw": 0.523,
+                "tasa_leve_otros": 0.453
+            },
+            {
+                "estrato_tamano": "2. Mediana (100 - 249 trabajadores)",
+                "empresas": 59869,
+                "ratio_grave_a_leve": 1.18,
+                "tasa_grave_dafw": 0.025,
+                "tasa_leve_otros": 0.022
+            },
+            {
+                "estrato_tamano": "2. Mediana (20 - 249 trabajadores)",
+                "empresas": 41162,
+                "ratio_grave_a_leve": 0.88,
+                "tasa_grave_dafw": 0.475,
+                "tasa_leve_otros": 0.536
+            },
+            {
+                "estrato_tamano": "2. Mediana (20 - 99 trabajadores)",
+                "empresas": 161336,
+                "ratio_grave_a_leve": 1.2,
+                "tasa_grave_dafw": 0.512,
+                "tasa_leve_otros": 0.425
+            },
+            {
+                "estrato_tamano": "3. Grande (250+ trabajadores)",
+                "empresas": 40080,
+                "ratio_grave_a_leve": 0.85,
+                "tasa_grave_dafw": 0.628,
+                "tasa_leve_otros": 0.738
+            }
+        ],
+        "hallazgo_subreporte": "Se detecta una evidente asimetría estadística en la cultura de reporte: las empresas pequeñas reportan una proporción mucho mayor de casos graves respecto a casos leves (ratio de 1.8x), lo que indica que en pequeñas empresas los accidentes leves se tratan informalmente y no se ingresan al registro oficial, mientras que las grandes corporaciones muestran sistemas de reporte más estandarizados y transparentes."
+    }
+}

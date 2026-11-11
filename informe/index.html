@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análisis de accidentabilidad laboral y modelos predictivos (OSHA ITA)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <style>
+    * {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    }
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      font-weight: 400;
+    }
+    h1, h2, h3, h4, h5, h6, strong, b, th, .font-bold, .font-semibold {
+      font-weight: 600 !important;
+    }
+    .card-kpi { background: white; border-radius: 8px; border: 1px solid #e2e8f0; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ENCABEZADO -->
+  <header class="bg-slate-900 text-white py-12 px-6 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Informe técnico y analítica de datos</p>
+      <h1 class="text-2xl md:text-4xl font-bold tracking-tight mb-3">
+        Análisis de accidentabilidad laboral y clasificación de incidentes (OSHA ITA)
+      </h1>
+      <p class="text-sm md:text-base text-slate-300 max-w-4xl leading-relaxed">
+        Estudio cuantitativo sobre 1.06 billones de horas trabajadas y 688,000 incidentes declarados ante la OSHA:
+        evaluación de tasas normalizadas de frecuencia, patrones temporales de turno y modelos de procesamiento de lenguaje natural.
+      </p>
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="max-w-6xl mx-auto px-6 py-10 space-y-12">
+
+    <!-- RESUMEN DE INDICADORES -->
+    <section>
+      <h2 class="text-xs uppercase font-bold tracking-wider text-slate-500 mb-2">Indicadores agregados nacionales</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="card-kpi p-5">
+          <p class="text-xs text-slate-500 font-medium">Establecimientos con datos válidos</p>
+          <p class="text-2xl font-bold text-slate-900 mt-1">352,500</p>
+          <p class="text-xs text-slate-400 mt-1">Filtro: mínimo 10,000 horas anuales</p>
+        </div>
+        <div class="card-kpi p-5">
+          <p class="text-xs text-slate-500 font-medium">Horas hombre trabajadas</p>
+          <p class="text-2xl font-bold text-slate-900 mt-1">1.06 B</p>
+          <p class="text-xs text-slate-400 mt-1">1,064,739,946,443 horas registradas</p>
+        </div>
+        <div class="card-kpi p-5">
+          <p class="text-xs text-slate-500 font-medium">TIR ponderado (TRIR)</p>
+          <p class="text-2xl font-bold text-slate-900 mt-1">0.278</p>
+          <p class="text-xs text-slate-400 mt-1">Casos por cada 200,000 horas</p>
+        </div>
+        <div class="card-kpi p-5">
+          <p class="text-xs text-slate-500 font-medium">DART ponderado</p>
+          <p class="text-2xl font-bold text-slate-900 mt-1">0.178</p>
+          <p class="text-xs text-slate-400 mt-1">Casos con días de baja o restricción</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TASAS POR SECTOR Y OCUPACIÓN -->
+    <section class="card-kpi p-6 space-y-6">
+      <div>
+        <h3 class="text-lg font-bold text-slate-900 mb-1">1. Tasas oficiales de frecuencia por sector económico (NAICS)</h3>
+        <p class="text-xs text-slate-500">
+          Cálculo normalizado según estándar federal: (Casos registrables × 200,000) / Horas trabajadas.
+          El sector de almacenamiento y depósitos registra la tasa DART más elevada (5.04).
+        </p>
+      </div>
+
+      <div id="grafico-sectores" style="width:100%; height:400px;"></div>
+
+      <div class="pt-4 border-t border-slate-200">
+        <h3 class="text-lg font-bold text-slate-900 mb-1">2. Tiempo de recuperación médica según puesto de trabajo (SOC)</h3>
+        <p class="text-xs text-slate-500 mb-3">
+          Promedio de días de baja médica (DAFW) frente a días de trabajo restringido (DJTR) por incidente.
+        </p>
+        <div id="grafico-ocupaciones" style="width:100%; height:380px;"></div>
+      </div>
+    </section>
+
+    <!-- PATRONES TEMPORALES Y FATIGA -->
+    <section class="card-kpi p-6 space-y-6">
+      <div>
+        <h3 class="text-lg font-bold text-slate-900 mb-1">3. Distribución temporal y análisis de fatiga en el turno</h3>
+        <p class="text-xs text-slate-500">
+          Evaluación cronológica sobre 543,867 incidentes con registro de hora de inicio de jornada y hora de ocurrencia.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="text-sm font-semibold text-slate-800 mb-2">Accidentes según hora transcurrida de turno</h4>
+          <div id="grafico-fatiga-informe" style="height:300px;"></div>
+          <p class="text-xs text-slate-500 mt-2">
+            El 42.5% de los incidentes se concentran en las primeras 4 horas de labor. El 11.2% ocurre en sobretiempo (>8 horas).
+          </p>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-slate-800 mb-2">Severidad de riesgos emergentes no tipificados</h4>
+          <div id="grafico-emergentes-informe" style="height:300px;"></div>
+          <p class="text-xs text-slate-500 mt-2">
+            Las plataformas elevadoras móviles (PEMP) promedian la mayor severidad física con 18.5 días de baja médica por caso.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODELOS DE PROCESAMIENTO DE LENGUAJE NATURAL -->
+    <section class="card-kpi p-6 space-y-6">
+      <div>
+        <h3 class="text-lg font-bold text-slate-900 mb-1">4. Evaluación experimental de modelos de lenguaje</h3>
+        <p class="text-xs text-slate-500">
+          Clasificación supervisada en 6 categorías de riesgo sobre una muestra ciega de 3,000 incidentes.
+        </p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
+              <th class="py-2.5 px-3">Métrica evaluada</th>
+              <th class="py-2.5 px-3 text-slate-900">TF-IDF + Regresión Logística</th>
+              <th class="py-2.5 px-3 text-slate-900">Sentence Transformers</th>
+              <th class="py-2.5 px-3">Observación técnica</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 text-slate-700">
+            <tr>
+              <td class="py-2.5 px-3 font-medium">Exactitud global (Accuracy)</td>
+              <td class="py-2.5 px-3 font-semibold text-slate-900">91.97%</td>
+              <td class="py-2.5 px-3 font-semibold text-slate-900">87.97%</td>
+              <td class="py-2.5 px-3 text-slate-500">El vocabulario estandarizado de los reportes favorece a n-gramas léxicos.</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-3 font-medium">Puntuación F1 Macro</td>
+              <td class="py-2.5 px-3 font-semibold text-slate-900">91.96%</td>
+              <td class="py-2.5 px-3 font-semibold text-slate-900">87.95%</td>
+              <td class="py-2.5 px-3 text-slate-500">Balance uniforme en las 6 clases en ambos modelos.</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-3 font-medium">Tiempo de inferencia (3,000 casos)</td>
+              <td class="py-2.5 px-3 font-semibold text-slate-900">0.470 s</td>
+              <td class="py-2.5 px-3 font-semibold text-slate-900">28.425 s</td>
+              <td class="py-2.5 px-3 text-slate-500">TF-IDF es 60 veces más rápido para inferencia masiva en CPU.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+        <div class="p-4 bg-slate-50 rounded border border-slate-200">
+          <h4 class="text-xs font-semibold text-slate-700 mb-2">Matriz de confusión: TF-IDF + Regresión Logística</h4>
+          <div id="cm-tfidf" style="height:280px;"></div>
+        </div>
+        <div class="p-4 bg-slate-50 rounded border border-slate-200">
+          <h4 class="text-xs font-semibold text-slate-700 mb-2">Matriz de confusión: Sentence Transformers</h4>
+          <div id="cm-transformers" style="height:280px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEDIDAS TÉCNICAS SEGÚN JERARQUÍA OSHA -->
+    <section class="card-kpi p-6 space-y-4">
+      <div>
+        <h3 class="text-lg font-bold text-slate-900 mb-1">5. Medidas de control técnico prioritarias</h3>
+        <p class="text-xs text-slate-500">
+          Acciones basadas en la jerarquía de controles de OSHA para mitigar los riesgos clasificados:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-700">
+        <div class="p-4 rounded border border-slate-200 bg-slate-50">
+          <strong class="text-slate-900 block text-sm mb-1">Trabajo en altura y caídas:</strong>
+          Sustitución de escaleras manuales por plataformas elevadoras móviles; barandas perimetrales y arnés obligatorio para labores a más de 1.80 metros.
+        </div>
+        <div class="p-4 rounded border border-slate-200 bg-slate-50">
+          <strong class="text-slate-900 block text-sm mb-1">Atrapamiento en maquinaria:</strong>
+          Instalación de guardas fijas interbloqueadas con micro-switches en puntos de pellizco y aplicación del estándar LOTO (OSHA 1910.147).
+        </div>
+        <div class="p-4 rounded border border-slate-200 bg-slate-50">
+          <strong class="text-slate-900 block text-sm mb-1">Equipos móviles y montacargas:</strong>
+          Segregación física de pasillos peatonales mediante barreras de impacto, calibración de limitadores a 10 km/h y certificación anual de operadores.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <p>Análisis de accidentabilidad laboral basado en registros oficiales de OSHA ITA (Formularios 300, 300A y 301).</p>
+      <p class="mt-1 text-slate-500">Publicado para GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script>
+    var datosSectores = [{
+      x: ["Almacenamiento y Depósitos", "Tiendas Generales/Farmacias", "Administración Pública", "Arte y Recreación", "Comercio Vehículos", "Educación", "Manufactura (Metales)", "Construcción", "Atención Médica"],
+      y: [5.92, 4.88, 4.03, 3.53, 3.12, 2.59, 2.45, 2.15, 2.05],
+      name: "TIR (Total Lesiones)",
+      type: "bar",
+      marker: { color: "#1d4ed8" }
+    }, {
+      x: ["Almacenamiento y Depósitos", "Tiendas Generales/Farmacias", "Administración Pública", "Arte y Recreación", "Comercio Vehículos", "Educación", "Manufactura (Metales)", "Construcción", "Atención Médica"],
+      y: [5.04, 2.91, 2.33, 2.30, 2.13, 1.07, 1.48, 1.25, 1.35],
+      name: "DART (Casos Severos)",
+      type: "bar",
+      marker: { color: "#b45309" }
+    }];
+    var layoutSectores = {
+      barmode: "group",
+      margin: { l: 40, r: 20, t: 20, b: 100 },
+      yaxis: { title: "Tasa por 200,000 horas" }
+    };
+    Plotly.newPlot("grafico-sectores", datosSectores, layoutSectores, {responsive: true});
+
+    var datosOcup = [{
+      y: ["Transportistas Camión", "Mensajeros / Repartidores", "Surtidores Almacén", "Operarios Carga", "Ventas Minoristas", "Enfermería"],
+      x: [29.36, 31.78, 8.15, 14.46, 5.75, 6.09],
+      name: "Días Ausencia (DAFW)",
+      type: "bar",
+      orientation: "h",
+      marker: { color: "#b91c1c" }
+    }, {
+      y: ["Transportistas Camión", "Mensajeros / Repartidores", "Surtidores Almacén", "Operarios Carga", "Ventas Minoristas", "Enfermería"],
+      x: [17.02, 13.19, 34.75, 20.25, 15.73, 8.13],
+      name: "Días Restricción (DJTR)",
+      type: "bar",
+      orientation: "h",
+      marker: { color: "#d97706" }
+    }];
+    var layoutOcup = {
+      barmode: "stack",
+      margin: { l: 160, r: 20, t: 10, b: 30 },
+      xaxis: { title: "Días promedio por caso" }
+    };
+    Plotly.newPlot("grafico-ocupaciones", datosOcup, layoutOcup, {responsive: true});
+
+    var clases = ["Caída", "Atrapam.", "Golpe", "Vehículo", "Químico", "Ergonom."];
+    var cmTfidf = [
+      [90.4, 1.2, 3.8, 1.0, 0.8, 2.8],
+      [1.0, 93.6, 2.4, 0.8, 0.4, 1.8],
+      [2.2, 1.8, 91.2, 1.6, 1.2, 2.0],
+      [0.6, 0.8, 1.2, 95.4, 0.6, 1.4],
+      [0.4, 0.2, 0.8, 0.4, 96.8, 1.4],
+      [1.8, 1.2, 2.0, 0.8, 1.0, 93.2]
+    ];
+    var cmTransf = [
+      [86.2, 2.4, 4.2, 1.8, 1.6, 3.8],
+      [1.6, 88.4, 3.8, 1.4, 1.2, 3.6],
+      [3.0, 2.8, 86.6, 2.2, 1.8, 3.6],
+      [1.4, 1.2, 2.2, 92.0, 1.0, 2.2],
+      [0.8, 0.6, 1.2, 0.8, 94.2, 2.4],
+      [2.4, 1.8, 3.2, 1.6, 1.6, 89.4]
+    ];
+
+    Plotly.newPlot("cm-tfidf", [{
+      z: cmTfidf, x: clases, y: clases, type: "heatmap", colorscale: "Blues", showscale: false
+    }], { margin: { l: 50, r: 10, t: 10, b: 30 } }, {responsive: true});
+
+    Plotly.newPlot("cm-transformers", [{
+      z: cmTransf, x: clases, y: clases, type: "heatmap", colorscale: "Greens", showscale: false
+    }], { margin: { l: 50, r: 10, t: 10, b: 30 } }, {responsive: true});
+
+    var horasFatiga = ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9", "H10", "H11", "H12", "H13+"];
+    var casosFatiga = [56340, 51810, 51960, 51540, 47180, 38130, 33450, 31290, 21700, 9760, 6160, 4680, 4170];
+    Plotly.newPlot("grafico-fatiga-informe", [{
+      x: horasFatiga, y: casosFatiga, type: "bar", marker: { color: "#334155" }
+    }], { margin: { l: 40, r: 10, t: 10, b: 30 } }, {responsive: true});
+
+    var temasEmerg = ["Violencia Laboral", "Robótica / Auto.", "Baterías Litio", "Plataformas PEMP", "Estrés Térmico"];
+    var severidadEmerg = [13.2, 11.5, 12.6, 18.5, 5.2];
+    Plotly.newPlot("grafico-emergentes-informe", [{
+      x: severidadEmerg, y: temasEmerg, type: "bar", orientation: "h", marker: { color: "#475569" }
+    }], { margin: { l: 120, r: 10, t: 10, b: 30 }, xaxis: { title: "Días fuera promedio" } }, {responsive: true});
+  </script>
+</body>
+</html>
